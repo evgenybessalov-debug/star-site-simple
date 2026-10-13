@@ -1,0 +1,408 @@
+---
+import '../styles/global.css';
+
+const routes = [
+  {
+    id: 'karelia',
+    name: 'Там, где кончаются дороги',
+    place: 'Карелия · Россия',
+    category: 'лес',
+    categoryLabel: 'Лес и вода',
+    days: '4 дня',
+    image: 'photo-1470770841072-f978cf4d019e',
+    alt: 'Тихое горное озеро на рассвете',
+    tone: 'green',
+    description: 'Туманное озеро, сосновые тропы и ни одного повода смотреть на часы.',
+  },
+  {
+    id: 'altai',
+    name: 'Медленное утро в горах',
+    place: 'Алтай · Россия',
+    category: 'горы',
+    categoryLabel: 'Горы',
+    days: '6 дней',
+    image: 'photo-1464822759023-fed622ff2c3b',
+    alt: 'Солнечный свет над горными вершинами',
+    tone: 'ochre',
+    description: 'Просыпаться выше облаков и идти только туда, куда зовёт тропа.',
+  },
+  {
+    id: 'ladoga',
+    name: 'Остров, который не спешит',
+    place: 'Ладожские шхеры · Россия',
+    category: 'лес',
+    categoryLabel: 'Лес и вода',
+    days: '3 дня',
+    image: 'photo-1501785888041-af3ef285b470',
+    alt: 'Спокойное озеро среди зелёных гор',
+    tone: 'blue',
+    description: 'Каяк, тёплый чай в термосе и маленькие острова без названий.',
+  },
+  {
+    id: 'tuscany',
+    name: 'Дорога среди холмов',
+    place: 'Тоскана · Италия',
+    category: 'деревни',
+    categoryLabel: 'Маленькие города',
+    days: '5 дней',
+    image: 'photo-1470252649378-9c29740c9fa8',
+    alt: 'Золотой закат над холмами и полями',
+    tone: 'rose',
+    description: 'Каменные деревни, длинные обеды и полевые дороги на закате.',
+  },
+  {
+    id: 'baikal',
+    name: 'Зимняя тишина Байкала',
+    place: 'Ольхон · Россия',
+    category: 'лес',
+    categoryLabel: 'Лес и вода',
+    days: '4 дня',
+    image: 'photo-1518837695005-2083093ee35b',
+    alt: 'Чистая синяя вода на фоне зимнего света',
+    tone: 'ice',
+    description: 'Прозрачный лёд, горячий чай и бескрайний горизонт.',
+  },
+  {
+    id: 'dolomites',
+    name: 'Тропа над облаками',
+    place: 'Доломиты · Италия',
+    category: 'горы',
+    categoryLabel: 'Горы',
+    days: '7 дней',
+    image: 'photo-1519681393784-d120267933ba',
+    alt: 'Горные вершины под звёздным небом',
+    tone: 'violet',
+    description: 'Высокие перевалы, ночёвки в приютах и звёзды совсем близко.',
+  },
+];
+
+const categories = [
+  { id: 'все', label: 'Все маршруты' },
+  { id: 'горы', label: 'Горы' },
+  { id: 'лес', label: 'Лес и вода' },
+  { id: 'деревни', label: 'Маленькие города' },
+];
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f1" />
+    <meta
+      name="description"
+      content="Небольшой путеводитель по местам, в которых становится тише. Находите маршруты, сохраняйте любимые и выбирайтесь на природу."
+    />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>Тихие маршруты — путешествия в своём ритме</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#главная" aria-label="Тихие маршруты — на главную">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M4 24c5.8-1 8.3-6.6 14-6.6s8.2 5.6 14 6.6M8.5 15c3.8-.8 5.4-4.2 9.5-4.2s5.7 3.4 9.5 4.2" />
+            <circle cx="18" cy="6" r="1.5" />
+          </svg>
+        </span>
+        <span>тихие<br />маршруты</span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#маршруты">Маршруты</a>
+        <a href="#подход">Наш подход</a>
+        <a href="#заметка">Письмо из пути</a>
+      </nav>
+      <a class="header-cta" href="#маршруты">
+        <span>Выбрать маршрут</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" id="главная" aria-labelledby="hero-title">
+        <div class="hero-photo" role="img" aria-label="Горное озеро в лучах утреннего солнца"></div>
+        <div class="hero-content">
+          <p class="eyebrow hero-eyebrow"><span></span> Небольшой путеводитель для больших пауз</p>
+          <h1 id="hero-title">Иногда лучший<br />план — <em>не спешить.</em></h1>
+          <p class="hero-description">
+            Собрали места, в которых легко выдохнуть, услышать себя и вспомнить, как это — просто быть здесь.
+          </p>
+          <a class="button button-light" href="#маршруты">
+            Найти своё место
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
+          </a>
+        </div>
+        <div class="hero-caption">
+          <span>61° 47′ N&nbsp; 30° 57′ E</span>
+          <span>Ладожское озеро, 06:18</span>
+        </div>
+        <div class="hero-index" aria-hidden="true">01 <span>/</span> 06</div>
+      </section>
+
+      <section class="intro section-wrap" id="подход">
+        <div class="intro-label">
+          <span class="section-number">01 — 03</span>
+          <span class="tiny-line"></span>
+          <span>Не путеводитель.<br />Скорее приглашение.</span>
+        </div>
+        <div class="intro-copy">
+          <h2>Меньше «успеть».<br />Больше <em>почувствовать.</em></h2>
+          <p>
+            Мы верим, что хорошая поездка не измеряется количеством точек на карте. Здесь — маршруты с
+            воздухом, временем и местом для вашего собственного открытия.
+          </p>
+          <a class="text-link" href="#маршруты">Листать маршруты <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="intro-stamp" aria-label="Коллекция продуманных маршрутов">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="stamp-circle" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" /></defs>
+            <text><textPath href="#stamp-circle">НЕ СПЕША · С ЛЮБОПЫТСТВОМ · НЕ СПЕША · С ЛЮБОПЫТСТВОМ · </textPath></text>
+            <path d="M39 71c9-1 13-11 21-11s12 10 21 11M44 54c6-1 9-7 16-7s10 6 16 7" />
+            <circle cx="60" cy="39" r="2" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="routes-section" id="маршруты">
+        <div class="section-wrap">
+          <div class="routes-heading">
+            <div>
+              <p class="eyebrow dark-eyebrow"><span></span> Коллекция мест</p>
+              <h2>Куда бы <em>свернуть?</em></h2>
+            </div>
+            <p class="routes-note">Необязательно далеко.<br />Главное — немного в сторону.</p>
+          </div>
+
+          <div class="route-tools">
+            <div class="filter-list" role="group" aria-label="Фильтр по типу маршрута">
+              {categories.map((category, index) => (
+                <button
+                  class:list={['filter-button', { active: index === 0 }]}
+                  type="button"
+                  data-filter={category.id}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+            <label class="search-box">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" /><path d="m13.2 13.2 4 4" /></svg>
+              <span class="visually-hidden">Найти маршрут по названию или месту</span>
+              <input id="route-search" type="search" placeholder="Найти место" autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+          </div>
+
+          <div class="route-grid" id="route-grid" aria-live="polite">
+            {routes.map((route, index) => (
+              <article
+                class:list={['route-card', `tone-${route.tone}`]}
+                data-category={route.category}
+                data-search={`${route.name} ${route.place} ${route.categoryLabel}`.toLowerCase()}
+                data-route-id={route.id}
+                style={`--card-index: ${index}`}
+              >
+                <div class="card-image-wrap">
+                  <img
+                    class="card-image"
+                    src={`https://images.unsplash.com/${route.image}?auto=format&fit=crop&w=900&q=80`}
+                    alt={route.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="card-category">{route.categoryLabel}</span>
+                  <button
+                    class="favorite-button"
+                    type="button"
+                    aria-label={`Добавить в избранное: ${route.name}`}
+                    aria-pressed="false"
+                    data-favorite={route.id}
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 4.3-8.8 10-8.8 10s-8.8-5.7-8.8-10A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.8 2.3Z" /></svg>
+                  </button>
+                </div>
+                <div class="card-content">
+                  <p class="card-place">{route.place}<span aria-hidden="true"> · </span>{route.days}</p>
+                  <h3>{route.name}</h3>
+                  <p class="card-description">{route.description}</p>
+                  <a class="card-link" href="#заметка" aria-label={`Узнать о маршруте «${route.name}»`}>
+                    Подробнее <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p class="empty-state" id="empty-state" hidden>Пока ничего не нашлось. Попробуйте другой запрос.</p>
+          <div class="routes-footer">
+            <span id="route-count">06 мест, которые стоит оставить себе</span>
+            <button class="shuffle-button" id="shuffle-route" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h2.3c3.2 0 5.2 10 8.4 10H17m-3-3 3 3-3 3M3 15h2.3c1.4 0 2.5-2.1 3.5-4.2m2.4-4.1C12.2 4.8 13.2 5 13.7 5H17m-3-3 3 3-3 3" /></svg>
+              Удиви меня
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="note-section" id="заметка">
+        <div class="note-image" role="img" aria-label="Вид на горное озеро и тихий лес"></div>
+        <div class="note-card">
+          <p class="eyebrow dark-eyebrow"><span></span> Записка из пути · № 08</p>
+          <h2>«Приехали раньше.<br />Просто <em>посидели.»</em></h2>
+          <p class="note-body">
+            Утром у воды пахло холодными камнями и кофе из термоса. Мы никуда не пошли — и почему-то
+            именно этот день потом вспоминали чаще всего.
+          </p>
+          <div class="note-signoff"><span class="signoff-rule"></span><span>Из блокнота Ани, Карелия</span></div>
+        </div>
+        <span class="note-coordinate">60° 05′ 25.0″ N · 30° 08′ 12.0″ E</span>
+      </section>
+
+      <section class="closing-section">
+        <p class="eyebrow closing-eyebrow"><span></span> Можно начать с малого</p>
+        <h2>Пусть следующий<br />выходной будет <em>вашим.</em></h2>
+        <a class="button button-dark" href="#маршруты">
+          Выбрать маршрут
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
+        </a>
+        <span class="closing-decoration" aria-hidden="true">✳</span>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#главная">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M4 24c5.8-1 8.3-6.6 14-6.6s8.2 5.6 14 6.6M8.5 15c3.8-.8 5.4-4.2 9.5-4.2s5.7 3.4 9.5 4.2" />
+            <circle cx="18" cy="6" r="1.5" />
+          </svg>
+        </span>
+        <span>тихие<br />маршруты</span>
+      </a>
+      <span class="footer-copy">Меньше спешки. Больше мира вокруг.</span>
+      <a class="back-to-top" href="#главная">Наверх ↑</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const cards = [...document.querySelectorAll('.route-card')];
+      const filters = [...document.querySelectorAll('[data-filter]')];
+      const searchInput = document.querySelector('#route-search');
+      const countLabel = document.querySelector('#route-count');
+      const emptyState = document.querySelector('#empty-state');
+      const toast = document.querySelector('#toast');
+      const savedKey = 'quiet-routes-favorites';
+      let currentFilter = 'все';
+      let toastTimer;
+
+      const readSaved = () => {
+        try {
+          const value = JSON.parse(localStorage.getItem(savedKey) || '[]');
+          return Array.isArray(value) ? value : [];
+        } catch {
+          showToast('Не удалось прочитать избранное в настройках браузера');
+          return [];
+        }
+      };
+
+      const savedRoutes = new Set(readSaved());
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('visible');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove('visible'), 2600);
+      }
+
+      function updateCards() {
+        const query = searchInput.value.trim().toLocaleLowerCase('ru');
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const matchesFilter = currentFilter === 'все' || card.dataset.category === currentFilter;
+          const matchesSearch = card.dataset.search.includes(query);
+          const isVisible = matchesFilter && matchesSearch;
+          card.hidden = !isVisible;
+          if (isVisible) visible += 1;
+        });
+
+        countLabel.textContent = `${String(visible).padStart(2, '0')} ${visible === 1 ? 'место' : visible > 1 && visible < 5 ? 'места' : 'мест'}, которые стоит оставить себе`;
+        emptyState.hidden = visible !== 0;
+      }
+
+      filters.forEach((button) => {
+        button.addEventListener('click', () => {
+          currentFilter = button.dataset.filter;
+          filters.forEach((filter) => {
+            const isActive = filter === button;
+            filter.classList.toggle('active', isActive);
+            filter.setAttribute('aria-pressed', String(isActive));
+          });
+          updateCards();
+        });
+      });
+
+      searchInput.addEventListener('input', updateCards);
+
+      document.querySelectorAll('[data-favorite]').forEach((button) => {
+        const id = button.dataset.favorite;
+        const card = button.closest('.route-card');
+        const routeName = card.querySelector('h3').textContent;
+
+        function syncButton() {
+          const isSaved = savedRoutes.has(id);
+          button.setAttribute('aria-pressed', String(isSaved));
+          button.setAttribute('aria-label', `${isSaved ? 'Убрать из' : 'Добавить в'} избранное: ${routeName}`);
+        }
+
+        syncButton();
+        button.addEventListener('click', () => {
+          if (savedRoutes.has(id)) {
+            savedRoutes.delete(id);
+            showToast('Маршрут убран из избранного');
+          } else {
+            savedRoutes.add(id);
+            showToast('Маршрут сохранён в избранное');
+          }
+
+          try {
+            localStorage.setItem(savedKey, JSON.stringify([...savedRoutes]));
+          } catch {
+            showToast('Не удалось сохранить: проверьте настройки браузера');
+          }
+          syncButton();
+        });
+      });
+
+      document.querySelector('#shuffle-route').addEventListener('click', () => {
+        const visibleCards = cards.filter((card) => !card.hidden);
+        if (visibleCards.length === 0) {
+          showToast('Сначала найдём для вас подходящие маршруты');
+          return;
+        }
+
+        const choice = visibleCards[Math.floor(Math.random() * visibleCards.length)];
+        choice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        choice.classList.remove('is-picked');
+        requestAnimationFrame(() => choice.classList.add('is-picked'));
+        showToast(`Ваш маршрут: ${choice.querySelector('h3').textContent}`);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          event.preventDefault();
+          searchInput.focus();
+        }
+        if (event.key === 'Escape' && document.activeElement === searchInput) {
+          searchInput.value = '';
+          searchInput.blur();
+          updateCards();
+        }
+      });
+
+      updateCards();
+    </script>
+  </body>
+</html>
